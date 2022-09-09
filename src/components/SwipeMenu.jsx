@@ -2,11 +2,6 @@ import * as React from 'react';
 import { styled} from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
-
-
-
-
-
 //components import
 import HeaderBar from './HeaderBar';
 import SwipeMenuList from './SwipeMenuList';
@@ -35,11 +30,6 @@ const closedMixin = (theme) => ({
 });
 
 const DrawerHeader = styled('div')(({ theme }) => ({
-    // display: 'flex',
-    // alignItems: 'center',
-    // justifyContent: 'flex-end',
-    // padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
 }));
 
@@ -61,51 +51,23 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
+
 const SwipeMenu = () => {
-    // const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    // const { open,setOpen } = useContext(DataContext);
 
     const handleDrawer = () => {
         setOpen(prevState=>!prevState);
     };
-
-    // const handleDrawerClose = () => {
-    //     setOpen(false);
-    // };
-
     return (
         <Box sx={{ display: 'flex' }}>
-            {/* <CssBaseline /> */}
             <HeaderBar
                 open={open} 
                 handleDrawer={handleDrawer}
             />
-            {/* <AppBar position="fixed" open={open}>
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawer}
-                        edge="start"
-                        sx={{
-                            marginRight: 5,
-                            ...(open && { display: 'none' }),
-                        }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        Mini variant drawer
-                    </Typography>
-                </Toolbar>
-            </AppBar> */}
-            <Drawer variant="permanent" open={open}>
-                <DrawerHeader>
-                    {/* <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-                    </IconButton> */}
-                </DrawerHeader>
-                <SwipeMenuList open={open} />
+            <Drawer variant="permanent" open={open} sx={{ borderRadius: '10px' }}>
+                <DrawerHeader/>
+                <SwipeMenuList open={open} handleDrawer={handleDrawer}/>
             </Drawer>
         </Box>
     );

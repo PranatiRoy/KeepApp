@@ -1,13 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
 
 import Homepage from './components/Homepage';
+import AddText from './context/AddText';
+import PopUpContent from './components/popup/PopUpContent';
+import PopUpNote from './components/popup/PopUpNote';
 
 function App() {
   return (
-    <div className="App">
-      <Homepage/>
-    </div>
+    <>
+      <AddText>
+        <Homepage />
+        
+      </AddText>
+    </>
   );
 }
 
