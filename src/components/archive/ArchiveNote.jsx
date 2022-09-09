@@ -6,7 +6,6 @@ import { Divider } from '@mui/material';
 
 import { DataContext } from "../../context/AddText";
 import PopUpNote from "../popup/PopUpNote";
-import PopUpContent from "../popup/PopUpContent";
 import PopUpArchive from "../popup/PopUpArchive";
 import '../popup/PopUp.css'
 
